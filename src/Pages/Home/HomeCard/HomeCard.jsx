@@ -13,7 +13,7 @@ const HomeCard = () => {
   }, []);
   return (
     <div>
-      <div className="grid grid-cols-3">
+      <div className="grid md:grid-cols-3 grid-cols-1">
         {" "}
         {movies.length < 4 ? (
           <div className="flex justify-center">

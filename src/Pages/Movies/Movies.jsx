@@ -11,7 +11,7 @@ const Movies = () => {
       .then((data) => setMovies(data));
   }, []);
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid md:grid-cols-3 grid-cols-1">
       {movies.map((movie) => (
         <MoviesCard movie={movie} key={movie.show.id} />
       ))}
