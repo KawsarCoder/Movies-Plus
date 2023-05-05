@@ -16,7 +16,9 @@ const HomeCard = () => {
       <div className="grid grid-cols-3">
         {" "}
         {movies.length < 4 ? (
-          <></>
+          <div className="flex justify-center">
+            <progress className="progress w-56"></progress>
+          </div>
         ) : (
           <>
             {movies.slice(0, 3).map((movie) => (

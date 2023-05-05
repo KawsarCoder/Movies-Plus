@@ -1,17 +1,35 @@
 import React from "react";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const SingleMovie = () => {
   const { genres, id, image, name, runtime, type, language, summary } =
     useLoaderData();
+
+  const notify = () => {
+    toast.success("Ticket successfully purchased");
+  };
+
+  const handleTicketInfo = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+  };
+
   const movieUrl = [];
   for (var mov in image) {
     movieUrl.push(image[mov]);
   }
   return (
     <div className="grid grid-cols-1 md:grid-cols-12">
+      {/* Modal start */}
       <input type="checkbox" id="book-now-modal" className="modal-toggle" />
-      <div className="modal">
+      <form className="modal" onSubmit={handleTicketInfo}>
         <div className="modal-box relative">
           <label
             htmlFor="book-now-modal"
@@ -61,7 +79,9 @@ const SingleMovie = () => {
                 </label>
                 <input
                   type="text"
+                  required
                   placeholder="email"
+                  name="email"
                   className="input input-bordered"
                 />
               </div>
@@ -70,18 +90,26 @@ const SingleMovie = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
+                  required
+                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary text-white">Buy Now</button>
+                <button onClick={notify} className="btn btn-primary text-white">
+                  Buy Now
+                </button>
+
+                <Toaster position="top-center" reverseOrder={false} />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
+      {/* Modal End  */}
+
       <div className="card bg-rose-500 p-6 text-white shadow-xl m-6 md:col-start-5 md:col-end-9 ">
         <figure>
           <img
