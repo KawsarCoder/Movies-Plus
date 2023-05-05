@@ -11,7 +11,7 @@ const Movies = () => {
       .then((data) => setMovies(data));
   }, []);
   return (
-    <div>
+    <div className="grid grid-cols-3">
       {movies.map((movie) => (
         <SingleMovie movie={movie} key={movie.show.id} />
       ))}
