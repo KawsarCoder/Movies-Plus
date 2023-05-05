@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import SingleMovie from "../../Movies/SingleMovie/SingleMovie";
+import MoviesCard from "../../Movies/MoviesCard/MoviesCard";
 
 const HomeCard = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +20,7 @@ const HomeCard = () => {
         ) : (
           <>
             {movies.slice(0, 3).map((movie) => (
-              <SingleMovie movie={movie} key={movie.show.id} />
+              <MoviesCard movie={movie} key={movie.show.id} />
             ))}
           </>
         )}

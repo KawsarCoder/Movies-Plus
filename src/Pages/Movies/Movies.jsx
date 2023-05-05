@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import SingleMovie from "./SingleMovie/SingleMovie";
+import MoviesCard from "./MoviesCard/MoviesCard";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -13,7 +13,7 @@ const Movies = () => {
   return (
     <div className="grid grid-cols-3">
       {movies.map((movie) => (
-        <SingleMovie movie={movie} key={movie.show.id} />
+        <MoviesCard movie={movie} key={movie.show.id} />
       ))}
     </div>
   );
